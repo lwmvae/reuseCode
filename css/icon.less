@@ -1,0 +1,560 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.borderRadius(@num:50%) {
+	border-radius: @num;
+}
+
+@color: #333;
+
+.backgroundColor(@bgColor:#333) {
+	background-color: @bgColor
+}
+
+body>div {
+	display: inline-block;
+	margin: 50px;
+}
+
+.add {
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+}
+
+.add::before {
+	content: '';
+	display: block;
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+}
+
+.reduce {
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+}
+
+.close {
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(45deg);
+}
+
+.close::before {
+	content: '';
+	display: block;
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+}
+
+.down {
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(45deg);
+}
+
+.down::before {
+	content: '';
+	display: block;
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+	position: relative;
+	top: -6px;
+	left: 6px;
+}
+
+.up {
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-45deg);
+}
+
+.up::before {
+	content: '';
+	display: block;
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+	position: relative;
+	top: 6px;
+	left: 6px;
+}
+
+.left {
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-45deg);
+}
+
+.left::before {
+	content: '';
+	display: block;
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(270deg);
+	position: relative;
+	top: 6px;
+	left: -6px;
+}
+
+.right {
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-45deg);
+}
+
+.right::before {
+	content: '';
+	display: block;
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+	position: relative;
+	top: -6px;
+	left: 6px;
+}
+
+.correct {
+	width: 15px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(45deg);
+}
+
+.correct::before {
+	content: '';
+	display: block;
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+	transform: rotate(-90deg);
+	position: relative;
+	top: -14px;
+	left: 0px;
+}
+
+.triangle-up {
+	border: 10px solid @color;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+}
+
+.triangle-down {
+	border: 10px solid @color;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+
+.arrow-down::before {
+	content: '';
+	display: inline-block;
+	border: 20px solid @color;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+}
+
+.arrow-down::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.backgroundColor;
+	position: relative;
+	top: -40px;
+	left: -30px;
+}
+
+.arrow-up::before {
+	content: '';
+	display: inline-block;
+	border: 20px solid @color;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+}
+
+.arrow-up::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.backgroundColor;
+	position: relative;
+	top: 20px;
+	left: -30px;
+}
+
+.arrow-left::before {
+	content: '';
+	display: inline-block;
+	border: 20px solid @color;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+
+.arrow-left::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.backgroundColor;
+	position: relative;
+	top: -10px;
+}
+
+.arrow-right::before {
+	content: '';
+	display: inline-block;
+	border: 20px solid @color;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+}
+
+.arrow-right::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	.backgroundColor;
+	position: relative;
+	top: -10px;
+	left: -60px;
+}
+
+.stop::before, .stop::after {
+	content: '';
+	display: inline-block;
+}
+
+.stop::before {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.stop::after {
+	border: 10px solid @color;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	position: relative;
+	top: -7px;
+	left: -20px;
+}
+
+.start {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.start::before, .start::after {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 2px;
+	.backgroundColor;
+	transform: rotate(90deg);
+}
+
+.start {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.start::before, .start::after {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 2px;
+	.backgroundColor;
+	transform: rotate(90deg);
+}
+
+.rewind {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+	position: relative;
+}
+
+.rewind::before, .rewind::after {
+	content: '';
+	display: inline-block;
+	border: 10px solid @color;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	position: absolute;
+	top: 5px;
+}
+
+.rewind::before {
+	left: -4px;
+}
+
+.rewind::after {
+	left: 3px;
+}
+
+.fast-forward {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+	position: relative;
+}
+
+.fast-forward::before, .fast-forward::after {
+	content: '';
+	display: inline-block;
+	border: 10px solid @color;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	position: absolute;
+	top: 5px;
+}
+
+.fast-forward::before {
+	left: 8px;
+}
+
+.fast-forward::after {
+	left: 15px;
+}
+
+.go-home {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.go-home::before {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	.backgroundColor;
+	position: relative;
+	top: 5px;
+	left: 7px;
+}
+
+.question {
+	width: 30px;
+	height: 30px;
+	border: 2px solid @color;
+	.borderRadius;
+	position: relative;
+}
+
+.question::before, .question::after {
+	content: '';
+	display: inline-block;
+	width: 4px;
+	.backgroundColor;
+	position: absolute;
+	left: 13px;
+}
+
+.question::before {
+	height: 4px;
+	top: 3px;
+}
+
+.question::after {
+	height: 15px;
+	top: 10px;
+}
+
+.search {
+	width: 20px;
+	height: 20px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.search::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 2px;
+	.backgroundColor;
+	transform: rotate(45deg);
+	position: relative;
+	top: 10px;
+	left: 14px;
+}
+
+.enlarge {
+	width: 20px;
+	height: 20px;
+	border: 2px solid @color;
+	.borderRadius;
+
+	i {
+		display: block;
+		width: 13px;
+		height: 2px;
+		.backgroundColor;
+		transform: rotate(90deg);
+		position: relative;
+		top: -12px;
+		left: 3px;
+	}
+
+}
+
+.enlarge::after {
+	content: '';
+	display: inline-block;
+	width: 13px;
+	height: 2px;
+	.backgroundColor;
+	position: relative;
+	top: -29px;
+	left: 3px;
+}
+
+.enlarge::before {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 2px;
+	.backgroundColor;
+	transform: rotate(45deg);
+	position: relative;
+	top: 10px;
+	left: 14px;
+}
+
+.lessen {
+	width: 20px;
+	height: 20px;
+	border: 2px solid @color;
+	.borderRadius;
+}
+
+.lessen::after {
+	content: '';
+	display: inline-block;
+	width: 13px;
+	height: 2px;
+	.backgroundColor;
+	position: relative;
+	top: -27px;
+	left: 3px;
+}
+
+.lessen::before {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 2px;
+	.backgroundColor;
+	transform: rotate(45deg);
+	position: relative;
+	top: 10px;
+	left: 14px;
+}
+
+.prohibit {
+	width: 30px;
+	height: 30px;
+	border: 3px solid @color;
+	.borderRadius;
+}
+
+.prohibit::before {
+	content: '';
+	display: inline-block;
+	width: 30px;
+	height: 4px;
+	.backgroundColor;
+	transform: rotate(45deg);
+}
+
+.moon, .moon::before {
+	width: 30px;
+	height: 30px;
+	.borderRadius;
+	.backgroundColor;
+}
+
+.moon::before {
+	content: '';
+	display: inline-block;
+	position: relative;
+	left: -10px;
+	top: 2px;
+	.backgroundColor(#fff);
+}
+
+.more::before, .more::after {
+	content: '';
+	display: block;
+	position: relative;
+}
+
+.more, .more::before, .more::after {
+	width: 30px;
+	height: 3px;
+	.backgroundColor;
+}
+
+.more::before {
+	top: -10px;
+}
+
+.more::after {
+	top: 7px;
+}
+
+.person {
+	width: 20px;
+	height: 20px;
+	.backgroundColor;
+	.borderRadius;
+}
+
+.person::after {
+	content: '';
+	display: block;
+	width: 35px;
+	height: 20px;
+	.backgroundColor;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	position: relative;
+	top: 25px;
+	left: -7px;
+}
