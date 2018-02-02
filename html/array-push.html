@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>array-push</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    let addArr = ['item0', 'item1', 'item2', 'item3', 'item4'];
+    let arr = [{
+        content: 'content1',
+        index: 2
+    }, {
+        content: 'content2',
+        index: 4
+    }];
+    //向数组固定位置插入元素
+    function addData(addArr, arr) {
+        let result = [];
+        for (let i = 0; i < addArr.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j].index == i) {
+                    result.push(arr[j].content)
+                }
+            }
+            result.push(addArr[i])
+        }
+        return result;
+    }
+
+    // console.log(addData(addArr, arr))
+    //["item0", "item1", "content1", "item2", "item3", "content2", "item4"]
+    </script>
+</body>
+
+</html>

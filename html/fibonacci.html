@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>固定位置插入数据</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+    //斐波那契数列：1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ... 求第n个数是多少
+    function fibonacci(num) {
+        if (num <= 2) return 1;
+        return fibonacci(num - 1) + fibonacci(num - 2);
+    }
+    // console.log(fibonacci(5));//5
+
+
+    //阶乘
+    function factorial(num){
+    	if(num==1){
+    		return num;
+    	}else if(num<1){
+    		return '输入数字不符合规则';
+    	}
+    	return num*factorial(num-1);
+    }
+
+    // console.log(factorial(1));
+
+
+    </script>
+</body>
+
+</html>

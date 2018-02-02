@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>wordCount</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+    const normalWords = "hi how are you i am fine thank you youtube a mam";
+
+    const unNormalWords = "hihowareyouiamfinethankyouyoutubeamam";
+
+    console.log(unNormalWords.match(/you/g).length)
+
+
+    function wordCount(str, word) {
+        let regex = new RegExp('\\b' + word + '\\b', 'g')
+        return str.match(regex).length
+    }
+
+    // function wordCount(str, word) {
+    //     let count = 0
+    //     let l = word.length
+    //     str.split('').forEach((v, i) => {
+    //         if (v !== word[0]) return
+    //         str.substring(i, i + l) === word && count++
+    //     })
+    //     return count
+    // }
+
+
+
+    //有空格
+    // function wordCount(str, word) {
+    //     let str = str || "";
+    //     let word = word || "";
+    //     let strArr = str.split(" ");
+    //     let count = 0;
+    //     for (let i = 0; i < strArr.length; i++) {
+    //         if (word === strArr[i]) {
+    //             count++
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // 没有空格
+    // function wordCount(str, word) {
+    //     let str = str || "";
+    //     let word = word || "";
+    //     let count = 0;
+    //     let index = str.indexOf(word);
+    //     while (index !== -1) {
+    //         count++;
+    //         str = str.substr(index + word.length);
+    //         index = str.indexOf(word)
+    //     }
+    //     return count;
+    // }
+
+
+
+    console.log(wordCount(normalWords, "you"));
+    </script>
+</body>
+
+</html>
