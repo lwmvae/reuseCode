@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arr2json</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=[{
+			name:'group-1',
+			_objects:[{
+				name:'group-2',
+				_objects:[{
+					name:'rect-2'
+				},{
+					name:'rect-3'
+				}]
+			},{
+				name:'rect-4'
+			}]
+		},{
+			name:'rect-5'
+		}];	
+
+		function filterArr(arr){
+			var newVal=[];
+			for(var i=0;i<arr.length;i++){
+				var obj={};
+				obj.title=arr[i].name;
+				obj.expand=true;
+				if(arr[i]._objects){
+					obj.children=filterArr(arr[i]._objects)
+				}
+				
+				newVal.push(obj)
+			}
+			return newVal
+		}
+
+		console.log(filterArr(arr))
+
+
+	</script>
+</body>
+</html>

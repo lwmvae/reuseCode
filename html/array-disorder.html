@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Array disorder</title>
+  <meta charset="UTF-8">
+  <title>Array disorder</title>
 </head>
 
 <body>
-    <script type="text/javascript">
+  <script type="text/javascript">
     function arrayDisorder(arr) {
-    	let _arr=arr.slice();
-    	for(let i=0;i<_arr.length;i++){
-    		let j=getRandomInt(0,i);
-    		let t=_arr[i];
-    		_arr[i]=_arr[j];
-    		_arr[j]=t;
-    	}
-    	return _arr;
+     let _arr=arr.slice();
+     for(let i=0;i<_arr.length;i++){
+      let j=getRandomInt(0,i);
+      let t=_arr[i];
+      _arr[i]=_arr[j];
+      _arr[j]=t;
     }
+    return _arr;
+  }
 
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    console.log(arrayDisorder([1,2,3,4]))
-    </script>
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  console.log(arrayDisorder([1,2,3,4]))
+</script>
 </body>
 
 </html>

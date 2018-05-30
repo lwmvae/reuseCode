@@ -2,39 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>array deweighting</title>
+  <meta charset="UTF-8">
+  <title>array deweighting</title>
 </head>
 
 <body>
-    <script type="text/javascript">
+  <script type="text/javascript">
     var arr = [1, 2, 3, 2, 1, 45, 45, 3];
 
     //ES6
     function unique(arr) {
-        return Array.from(new Set(arr));
+      return Array.from(new Set(arr));
     }
     // console.log(unique(arr));
 
     function removeNext(arr) {
-        for (let i = 0; i < arr.length; i++) {
-            for (let j = i + 1; j < arr.length; j++) {
-                if (arr[i] === arr[j]) arr.splice(j, 1); //如果前一个值与后一个值相等，那么就去掉后一个值，splice()可以修改原数组
-            }
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) arr.splice(j, 1); //如果前一个值与后一个值相等，那么就去掉后一个值，splice()可以修改原数组
         }
-        return arr;
+      }
+      return arr;
     }
     // console.log(removeNext(arr));
 
     function removeCopy(arr) {
-        return arr.filter(function(item, index, array) {
-            return array.indexOf(item) === index;
-            //或者这样写return array.indexOf(item, index+1) === -1; 如果没有重复项，返回true
-            //用filter方法，返回ietm对应的indexOf索引值与本身index索引值相等的值，也就是去掉重复的值，filter本身不修改数组，只是会自动遍历数组，去掉重复值后，那么arr就剩下不重复的了
+      return arr.filter(function(item, index, array) {
+        return array.indexOf(item) === index;
+          //或者这样写return array.indexOf(item, index+1) === -1; 如果没有重复项，返回true
+          //用filter方法，返回ietm对应的indexOf索引值与本身index索引值相等的值，也就是去掉重复的值，filter本身不修改数组，只是会自动遍历数组，去掉重复值后，那么arr就剩下不重复的了
         });
     }
     console.log(removeCopy(arr))
-    </script>
+  </script>
 </body>
 
 </html>

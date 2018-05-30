@@ -16,20 +16,20 @@
     console.log(unNormalWords.match(/you/g).length)
 
 
-    function wordCount(str, word) {
-        let regex = new RegExp('\\b' + word + '\\b', 'g')
-        return str.match(regex).length
-    }
-
     // function wordCount(str, word) {
-    //     let count = 0
-    //     let l = word.length
-    //     str.split('').forEach((v, i) => {
-    //         if (v !== word[0]) return
-    //         str.substring(i, i + l) === word && count++
-    //     })
-    //     return count
+    //     let regex = new RegExp('\\b' + word + '\\b', 'g')
+    //     return str.match(regex).length
     // }
+
+    function wordCount(str, word) {
+        let count = 0
+        let l = word.length
+        str.split('').forEach((v, i) => {
+            if (v !== word[0]) return
+            str.substring(i, i + l) === word && count++
+        })
+        return count
+    }
 
 
 
