@@ -19,6 +19,35 @@
 			return result.join('')
 		}
 		console.log(cssStyle2DomStyle('-webkit-border-image'))
+
+		//驼峰化
+		function camlize(str){
+			return str.replace(/[-|\s]+(.)?/g,function(match,c){
+				return c?c.toUpperCase():'';
+			})
+		}
+
+		console.log(camlize('-webkit-border-image'))
+
+
+
+		// 将每个单词的首字母转换为大写
+		function firstToUpperCase(str){
+			return str.replace(/(?:(^|\s))\w/g,function(c){
+				return c.toUpperCase()
+			})
+		}
+
+		console.log(firstToUpperCase('i am a web')) 
+
+
+
+
+		//去掉字符串的空格
+		function trim(str){
+			return str.replace(/^\s+|\s+$/g,'');
+		}
+		console.log('haha'+trim('   assd  fg    '))
 	</script>
 </body>
 </html>
