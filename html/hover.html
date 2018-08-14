@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hover</title>
+	<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	.waterfall {
+		margin: 50px;
+		width: 300px;
+		height: 300px;
+		border: 1px solid #dfdfdf;
+		position: relative;
+	}
+	.waterfall::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transform: scale(0, 0);
+		transition: transform 0.5s cubic-bezier(0.3, 0, 0, 1.3);/*关键函数*/
+		background-color: #dfdfdf;
+		z-index: -1;
+	}
+	.waterfall:hover::after {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto auto;/*图片居中，仅适用于图片*/
+	}
+	</style>
+</head>
+<body>
+	<div class="waterfall">
+		<img src="../img/query.png">
+	</div>
+</body>
+</html>
