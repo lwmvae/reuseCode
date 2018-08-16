@@ -92,6 +92,19 @@
 
     console.log(simpleSelect([9,3,1,4]))
 
+
+    //返回数组中重复的内容
+    var testArr=[1,3,1,5,2,3];
+    Array.prototype.extarChar=function(){
+      var cacheChar=[];
+      var that=this;
+      this.map(function(item,index){
+        (that.indexOf(item)!=that.lastIndexOf(item)) && cacheChar.indexOf(item)==-1?cacheChar.push(item):-1
+      })
+      return cacheChar;
+    }
+    console.log(testArr.extarChar())
+
   </script>
 </body>
 
