@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>getType</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+  function getType(obj) {
+    var class2type = {};
+    "Undefined Null Boolean Number String Function Object Array Error RegExp Data".split(' ').map(function(item) {
+      class2type["[object " + item + "]"] = item.toLowerCase();
+    });
+
+    return typeof obj === 'object' || typeof obj === 'function' ? class2type[Object.prototype.toString.call(obj)] || 'object' : typeof obj;
+  }
+  console.log(getType([{ a: 1 }]))
+
+
+  //判断是不是函数
+  function isFunction(obj) {
+  	return getType(obj)==='function'
+  }
+  
+  //兼容判断是不是数组
+  var isArray=Array.isArray || function (obj) {
+  	return getType(obj)==='array'
+  }
+  </script>
+</body>
+
+</html>
