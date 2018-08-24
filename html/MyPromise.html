@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MyPromise</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+// 定义三种状态
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
+function MyPromise(fn) {
+  let self = this;
+  self.value = null; // 成功时的值
+  self.error = null; // 失败时的原因
+  self.status = PENDING; //初始状态
+  self.onFulfilledCallbacks = []; //回调函数
+  self.onRejectedCallbacks = [];
+
+  function resolve(value) {
+    //如果状态是pending才去修改状态为fulfilled并执行成功逻辑
+    if (self.status === PENDING) {
+      //利用setTimeout特性将具体执行放到then之后
+      setTimeout(() => {
+        self.status = FULFILLED;
+        self.value = value;
+        // resolve时执行成功回调
+        self.onFulfilledCallbacks.forEach((callback) => {
+          callback(self.value)
+        })
+      })
+    }
+  }
+
+  function reject(error) {
+    if (self.status === PENDING) {
+      setTimeout(() => {
+        self.status = REJECTED;
+        self.error = error;
+        // reject时执行成功回调
+        self.onRejectedCallbacks.forEach((callback) => {
+          callback(self.error)
+        })
+      })
+    }
+  }
+
+  fn(resolve, reject)
+
+}
+
+MyPromise.prototype.then = function(onFulfilled, onRejected) {
+  const self = this;
+  let bridgePromise;
+  //防止使用者不传成功或失败回调函数，所以成功失败回调都给了默认回调函数
+  onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
+  onRejected = typeof onRejected === 'function' ? onRejected : error => { throw error };
+  if (self.status === FULFILLED) {
+    return bridgePromise = new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          let x = onFulfilled(self.value);
+          resolvePromise(bridgePromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+  }
+  if (self.status === REJECTED) {
+    return bridgePromise = new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          let x = onRejected(self.error);
+          resolvePromise(bridgePromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+  }
+
+  if (self.status === PENDING) {
+    return bridgePromise = new MyPromise((resolve, reject) => {
+      self.onFulfilledCallbacks.push((value) => {
+        try {
+          let x = onFulfilled(value);
+          resolvePromise(bridgePromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      });
+      self.onRejectedCallbacks.push((error) => {
+        try {
+          let x = onRejected(error);
+          resolvePromise(bridgePromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+  }
+
+}
+//catch方法其实是个语法糖，就是只传onRejected不传onFulfilled的then方法
+MyPromise.prototype.catch = function(onRejected) {
+  return this.then(null, onRejected);
+}
+//用来解析回调函数的返回值x，x可能是普通值也可能是个promise对象
+function resolvePromise(bridgePromise, x, resolve, reject) {
+  //如果x是一个promise
+  if (x instanceof MyPromise) {
+    //如果这个promise是pending状态，就在它的then方法里继续执行resolvePromise解析它的结果，直到返回值不是一个pending状态的promise为止
+    if (x.status === PENDING) {
+      x.then((y) => {
+        resolvePromise(bridgePromise, y, resolve, reject)
+      }, (error) => {
+        reject(error)
+      })
+    } else {
+      x.then(resolve, reject);
+    }
+  } else {//如果x是一个普通值，就让bridgePromise的状态fulfilled，并把这个值传递下去
+    resolve(x);
+  }
+}
+//返回一个promise，在这个promise中给所有传入的promise的then方法中都注册上回调，回调成功了就把值放到结果数组中，所有回调都成功了就让返回的这个promise去reslove，把结果数组返回出去
+MyPromise.all=function (promises) {
+  return new MyPromise((resolve,reject)=>{
+    let result=[];
+    let count=0;
+    for(let i=0;i<promises.length;i++){
+      promises[i].then((data)=>{
+        result[i]=data;
+        if(++count==promises.length){
+          resolve(result)
+        }
+      },(error)=>{
+        reject(error);
+      })
+    }
+  })
+}
+//race和all大同小异，只不过它不会等所有promise都成功，而是谁快就把谁返回出去
+MyPromise.race=function (promises) {
+  return new MyPromise((resolve,reject)=>{
+    for(let i=0;i<promises.length;i++){
+      promises[i].then((data)=>{
+        resolve(data);
+      },(error)=>{
+        reject(error);
+      })
+    }
+  })
+}
+
+MyPromise.resolve=function (value) {
+  return new MyPromise(resolve=>{
+    resolve(value)
+  })
+}
+
+MyPromise.reject=function (error) {
+  return new MyPromise((resolve,reject)=>{
+    reject(error);
+  })
+}
+
+var promise = new MyPromise((resolve, reject) => {
+  console.log('1');
+  resolve('134')
+}).then((value) => {
+  console.log(value);
+}).then((value) => {
+  console.log(value)
+})
+</script>
+
+</html>

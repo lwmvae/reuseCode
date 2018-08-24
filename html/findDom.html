@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>foundDom</title>
+</head>
+
+<body>
+  <header id="header">123</header>
+  <div id="container">
+    <div id="container-wrapper">
+      <div id="content">456</div>
+    </div>
+  </div>
+  <footer id="footer">789</footer>
+</body>
+<script type="text/javascript">
+console.time()
+
+function getElementById(node, id) {
+  if (!node) return null;
+  if (node.id === id) {
+    return node;
+  }
+  for (var i = 0; i < node.childNodes.length; i++) {
+    var found = getElementById(node.childNodes[i], id);
+    if (found) return found;
+  }
+  return null;
+}
+console.log(getElementById(document, 'content'))
+console.timeEnd()
+
+console.time()
+
+function getElementId(node, id) {
+  while (node) {
+    if (node.id === id) return node;
+    node = nextElement(node);
+  }
+  return null;
+}
+
+function nextElement(node) {
+  if (node.children.length) {
+    return node.children[0];
+  }
+  if (node.nextElementSibling) {
+    return node.nextElementSibling;
+  }
+  while (node.parentNode) {
+    if (node.parentNode.nextElementSibling) {
+      return node.parentNode.nextElementSibling;
+    }
+    node = node.parentNode;
+  }
+  return null;
+}
+
+console.log(getElementId(document, 'content'))
+console.timeEnd()
+
+console.log(console)
+</script>
+
+</html>
