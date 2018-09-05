@@ -105,6 +105,19 @@
     }
     console.log(testArr.extarChar())
 
+
+    //js实现字符串中字符重复次数的大小排列输出
+    var str='13011190595';
+    function sortStr(str){
+      var newStr=str.split('').sort().join('');
+      var arr=newStr.match(/(.)\1{0,}/g);//关键
+      var res=arr.sort(function(a,b){
+        return a.length-b.length
+      })
+      return res.join('')
+    }
+    console.log(sortStr(str))
+
   </script>
 </body>
 

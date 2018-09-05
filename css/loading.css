@@ -82,11 +82,11 @@ li {
     transform: translateY(0);
   }
 }
-.loading-3 {
+#loading {
   height: 50px;
   margin: 50px;
 }
-.loading-3 li {
+#loading li {
   width: 15px;
   height: 15px;
   background-color: #4b9cdb;
@@ -95,28 +95,28 @@ li {
   opacity: 0;
   animation: loading-3 4s infinite;
 }
-.loading-3 .line-1 {
+#loading .line-1 {
   animation-delay: 0.8s;
 }
-.loading-3 .line-2 {
+#loading .line-2 {
   animation-delay: 0.7s;
 }
-.loading-3 .line-3 {
+#loading .line-3 {
   animation-delay: 0.6s;
 }
-.loading-3 .line-4 {
+#loading .line-4 {
   animation-delay: 0.5s;
 }
-.loading-3 .line-5 {
+#loading .line-5 {
   animation-delay: 0.4s;
 }
-.loading-3 .line-6 {
+#loading .line-6 {
   animation-delay: 0.3s;
 }
-.loading-3 .line-7 {
+#loading .line-7 {
   animation-delay: 0.2s;
 }
-.loading-3 .line-8 {
+#loading .line-8 {
   animation-delay: 0.1s;
 }
 @keyframes loading-3 {
